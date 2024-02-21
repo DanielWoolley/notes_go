@@ -1,9 +1,13 @@
 package main
 
-import "os"
+import (
+	"fmt"
+	"os"
+)
 
 func main() {
 	Write()
+	Read()
 }
 
 func Write() {
@@ -16,4 +20,12 @@ func Write() {
 	if err != nil {
 		panic(err)
 	}
+}
+
+func Read() {
+	data, err := os.ReadFile("notes.txt")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(string(data))
 }
