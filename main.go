@@ -6,17 +6,20 @@ import (
 )
 
 func main() {
-	Write()
+	var date string
+	fmt.Print("Enter the date")
+	fmt.Scan(&date)
+	Write(date)
 	Read()
 }
 
-func Write() {
+func Write(date string) {
 	file, err := os.Create("notes.txt")
 	if err != nil {
 		panic(err)
 	}
 	defer file.Close()
-	_, err = file.WriteString("notes")
+	_, err = file.WriteString(date)
 	if err != nil {
 		panic(err)
 	}
