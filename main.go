@@ -7,19 +7,23 @@ import (
 
 func main() {
 	var date string
-	fmt.Print("Enter the date")
+	var note string
+	fmt.Print("Enter the date ")
 	fmt.Scan(&date)
-	Write(date)
+	fmt.Print("Enter your notes ")
+	fmt.Scan(&note)
+	Write(date, note)
 	Read()
 }
 
-func Write(date string) {
+func Write(date string, note string) {
 	file, err := os.Create("notes.txt")
 	if err != nil {
 		panic(err)
 	}
 	defer file.Close()
 	_, err = file.WriteString(date)
+	_, err = file.WriteString(note)
 	if err != nil {
 		panic(err)
 	}
