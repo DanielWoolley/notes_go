@@ -6,14 +6,19 @@ import (
 )
 
 func main() {
+	date, note := getUserInput()
+	Write(date, note)
+	Read()
+}
+
+func getUserInput() (string, string) {
 	var date string
 	var note string
 	fmt.Print("Enter the date ")
 	fmt.Scan(&date)
 	fmt.Print("Enter your notes ")
 	fmt.Scan(&note)
-	Write(date, note)
-	Read()
+	return date, note
 }
 
 func Write(date string, note string) {
@@ -22,8 +27,7 @@ func Write(date string, note string) {
 		panic(err)
 	}
 	defer file.Close()
-	_, err = file.WriteString(date)
-	_, err = file.WriteString(note)
+	_, err = file.WriteString(date + "\n" + note)
 	if err != nil {
 		panic(err)
 	}
