@@ -6,19 +6,24 @@ import (
 )
 
 func main() {
-	date, note := getUserInput()
+	date := getDate()
+	note := getNote()
 	Write(date, note)
 	Read()
 }
 
-func getUserInput() (string, string) {
+func getDate() string {
 	var date string
-	var note string
-	fmt.Print("Enter the date ")
+	fmt.Println("Enter the date ")
 	fmt.Scan(&date)
+	return date
+}
+
+func getNote() string {
+	var note string
 	fmt.Print("Enter your notes ")
 	fmt.Scan(&note)
-	return date, note
+	return note
 }
 
 func Write(date string, note string) {
