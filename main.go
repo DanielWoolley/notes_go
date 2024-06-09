@@ -5,6 +5,8 @@ import (
 	"os"
 )
 
+const fileName = "notes.text"
+
 func main() {
 	date := getDate()
 	note := getNote()
@@ -27,7 +29,7 @@ func getNote() string {
 }
 
 func Write(date string, note string) {
-	file, err := os.Create("notes.txt")
+	file, err := os.Create(fileName)
 	if err != nil {
 		panic(err)
 	}
@@ -39,7 +41,7 @@ func Write(date string, note string) {
 }
 
 func Read() {
-	data, err := os.ReadFile("notes.txt")
+	data, err := os.ReadFile(fileName)
 	if err != nil {
 		panic(err)
 	}
